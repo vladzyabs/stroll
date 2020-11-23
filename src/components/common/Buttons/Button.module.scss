@@ -1,0 +1,77 @@
+@import "../../../styles/variables";
+
+@mixin commonBtn {
+  outline: none;
+  cursor: pointer;
+  height: 50px;
+  width: 100%;
+  border-radius: 6px;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 45px;
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  label {
+    font-weight: 600;
+    font-size: 16px;
+    color: $title-color;
+    margin-bottom: 5px;
+  }
+}
+
+.button {
+  @include commonBtn;
+  border: 1px solid transparent;
+  background: $darkblue-color;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;;
+
+  &:hover,
+  &:focus {
+    background: $darkred-color;
+  }
+}
+
+.buttonLink {
+  position: relative;
+  display: block;
+  @include commonBtn;
+  border: 2px solid $darkblue-color;
+  border-radius: 6px;
+  text-decoration: none;
+  color: $darkblue-color;
+
+  transition: all .5s ease;
+  z-index: 1;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &:after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: $darkblue-color;
+    z-index: -1;
+    transition: all .5s ease;
+    transform: scale(0);
+    transform-origin: bottom right;
+  }
+
+  &:hover:after {
+    transform: scale(1);
+  }
+}
