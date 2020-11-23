@@ -1,0 +1,31 @@
+@import "../../../styles/variables";
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  label {
+    font-weight: 600;
+    font-size: 16px;
+    color: $title-color;
+    margin-bottom: 5px;
+  }
+}
+
+.input {
+  outline: none;
+  height: 50px;
+  width: 100%;
+  padding: 12px 15px 12px 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: $lightgray-color;
+  font-size: 15px;
+  line-height: 25px;
+  color: #8C8C8C;
+}
+
+input[type="date"] {
+  background: $lightgray-color url("../../../assets/icons/date.png") 95% 50% no-repeat;
+}
