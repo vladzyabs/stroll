@@ -26,6 +26,10 @@
   color: #8C8C8C;
 }
 
-input[type="date"] {
+.input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
   background: $lightgray-color url("../../../assets/icons/date.png") 95% 50% no-repeat;
 }

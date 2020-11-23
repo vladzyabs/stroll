@@ -4,16 +4,16 @@ import classes from './Button.module.scss'
 type ButtonPropsType
 	= React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 	& {
-	labelTitle?: string
+	label?: string
 }
 
 function Button(props: ButtonPropsType) {
 	const classesBtn = `${classes.button} ${props.className ? props.className : ''}`
-	const { labelTitle } = props
+	const { label } = props
 
 	return (
 		<div className={classes.buttonWrapper}>
-			{labelTitle && <label>{labelTitle}</label>}
+			{label && <label>{label}</label>}
 			<button {...props} className={classesBtn}/>
 		</div>
 	)
