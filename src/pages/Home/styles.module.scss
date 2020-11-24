@@ -139,6 +139,19 @@
   }
 }
 
+.videoSub {
+  margin-bottom: 50px;
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .videoSubItem {
+    align-items: center;
+  }
+}
+
 .bookingForm {
   padding-bottom: 48px;
 
