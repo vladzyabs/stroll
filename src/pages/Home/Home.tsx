@@ -2,6 +2,7 @@ import React from 'react'
 import Banner from './Banner'
 import Gallery from './Gallery'
 import Carousel from './Сarousel'
+import SubscriptionForm from './SubscriptionForm'
 
 function HomePage() {
 	return (
@@ -9,6 +10,7 @@ function HomePage() {
 			<Carousel/>
 			<Banner/>
 			<Gallery/>
+			<SubscriptionForm/>
 		</>
 	)
 }

@@ -1,14 +1,40 @@
 @import "../../../styles/variables";
 
 .wrapper {
+  text-transform: capitalize;
+
+  &.primary {
+    .supTitle {
+      color: $darkblue-color;
+    }
+    .title {
+      color: $title-color;
+    }
+  }
+
+  &.secondary {
+    .supTitle {
+      color: $yellow-color;
+    }
+    .title {
+      color: #fff;
+    }
+  }
 
   .supTitle {
     position: relative;
     font-size: 16px;
     line-height: 30px;
     font-weight: 700;
-    color: $darkblue-color;
     padding-left: 70px;
+
+    &.primary {
+      color: $darkblue-color;
+    }
+
+    &.secondary {
+      color: $yellow-color;
+    }
 
     &:before {
       position: absolute;
@@ -21,10 +47,10 @@
       transform: translateY(-50%);
     }
   }
+
   .title {
     font-size: 36px;
     line-height: 46px;
-    color: $title-color;
     font-family: 'Open Sans', sans-serif;
   }
 }

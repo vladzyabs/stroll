@@ -55,7 +55,7 @@ function Carousel() {
 			>
 
 				{
-					slides.map(sl => <SwiperSlide>
+					slides.map((sl, i) => <SwiperSlide key={i}>
 						<Slide
 							{...sl}
 						/>

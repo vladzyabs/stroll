@@ -5,7 +5,7 @@ type InputPropsType
 	= React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 	& {
 	type: 'input' | 'date'
-	label: string
+	label?: string
 }
 
 function Input(props: InputPropsType) {
@@ -14,7 +14,7 @@ function Input(props: InputPropsType) {
 
 	return (
 		<div className={classes.inputWrapper}>
-			<label>{label}</label>
+			{label && <label>{label}</label>}
 			<input {...props} type={type} className={classesInput}/>
 		</div>
 	)

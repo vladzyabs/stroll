@@ -12,7 +12,7 @@ function Gallery() {
 	return (
 		<section className={classes.gallery}>
 			<Container>
-				<Title supTitle={'Hot Tours'} title={'Popular packages'}/>
+				<Title type={'primary'} supTitle={'Hot Tours'} title={'Popular packages'}/>
 				<div className={classes.content}>
 
 					<GalleryCard img={g1} title={'Paris'} link={'/#'} subTitle={{ days: 3, nights: 4, price: 750 }}/>
