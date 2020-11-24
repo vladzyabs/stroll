@@ -139,6 +139,26 @@
   }
 }
 
+.bookingForm {
+  padding-bottom: 48px;
+
+  .content {
+    padding-bottom: 48px;
+  }
+
+  .title {
+    margin-bottom: 24px;
+  }
+
+  .formContent {
+    padding-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 16px;
+  }
+}
+
 .banner {
   padding: 50px;
 
