@@ -3,8 +3,6 @@ import { Container, Logo } from '../common'
 import classes from './styles.module.scss'
 import Navbar from './Navbar'
 import BurgerButton from './BurgerButton'
-import { faGlobeAmericas } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Header() {
 	const [activeNav, setActiveNav] = React.useState<boolean>(false)
