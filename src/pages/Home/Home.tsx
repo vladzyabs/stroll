@@ -5,6 +5,7 @@ import Carousel from './Сarousel'
 import SubscriptionForm from './SubscriptionForm'
 import BookingForm from './BookingForm'
 import VideoSub from './VideoSub'
+import VideoBlock from './VideoBlock'
 
 function HomePage() {
 	return (
@@ -12,6 +13,7 @@ function HomePage() {
 			<Carousel/>
 			<Banner/>
 			<Gallery/>
+			<VideoBlock/>
 			<VideoSub/>
 			<BookingForm/>
 			<SubscriptionForm/>
