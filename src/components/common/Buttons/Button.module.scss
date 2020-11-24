@@ -41,12 +41,14 @@
 }
 
 .buttonLink {
+  padding: 0 15px;
   position: relative;
   display: block;
   @include commonBtn;
   border: 2px solid $darkblue-color;
   border-radius: 6px;
   text-decoration: none;
+  text-align: center;
   color: $darkblue-color;
 
   transition: all .5s ease;

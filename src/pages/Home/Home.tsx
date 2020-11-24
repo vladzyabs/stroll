@@ -1,11 +1,13 @@
 import React from 'react'
-// import Banner from './Banner'
+import Banner from './Banner'
 import Gallery from './Gallery'
+import Carousel from './Сarousel'
 
 function HomePage() {
 	return (
 		<>
-			{/*<Banner/>*/}
+			<Carousel/>
+			<Banner/>
 			<Gallery/>
 		</>
 	)
