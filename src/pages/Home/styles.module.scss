@@ -1,0 +1,56 @@
+@import "../../styles/variables";
+
+.banner {
+  padding: 50px;
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .bannerCard {
+    width: 25%;
+    padding: 15px;
+
+    .cardIcon {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: $lightred-color;
+      text-align: center;
+      color: $darkred-color;
+      font-size: 25px;
+      line-height: 74px;
+      transition: .2s all;
+
+      margin-bottom: 20px;
+    }
+
+    &:hover .cardIcon {
+      background: $lightblue-color;
+      color: $darkblue-color;
+    }
+
+    h5 {
+      margin-bottom: 8px;
+
+      a {
+        color: $ebony-clay-color;
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 700;
+        transition: .2s all;
+
+        &:hover {
+          color: $darkred-color;
+        }
+      }
+    }
+
+    p {
+      color: $gray-color;
+    }
+  }
+}
