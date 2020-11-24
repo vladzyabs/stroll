@@ -1,3 +1,4 @@
+export { default as Logo } from './Logo/Logo'
 export { default as Button } from './Buttons/Button'
 export { default as ButtonLink } from './Buttons/ButtonLink'
 export { default as Input } from './Input/Input'

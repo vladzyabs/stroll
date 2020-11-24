@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from '../common'
+import { Container, Logo } from '../common'
 import classes from './styles.module.scss'
 import Navbar from './Navbar'
 import BurgerButton from './BurgerButton'
@@ -14,9 +14,9 @@ function Header() {
 		<header className={classes.header}>
 			<Container>
 				<div className={classes.content}>
-					<div className={classes.logo}>
-						Str<span className={classes.yellow}><FontAwesomeIcon icon={faGlobeAmericas}/></span>ll
-					</div>
+					<a className={classes.logo} href={'/#'}>
+						<Logo type={'primary'}/>
+					</a>
 					<Navbar active={activeNav}/>
 					<BurgerButton style={{ display: 'none' }} onClick={toggleNavHandler}/>
 				</div>
