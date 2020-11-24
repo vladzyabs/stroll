@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+
+.buttonUp {
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+  z-index: 999;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 13px;
+  padding: 13px 0;
+  background-color: $darkred-color;
+  color: #fff;
+  transform: scale(0);
+  transition: .2s all;
+
+  &.show {
+    transform: scale(1);
+  }
+}
