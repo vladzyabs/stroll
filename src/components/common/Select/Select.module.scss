@@ -1,6 +1,7 @@
 @import "../../../styles/variables";
 
 .selectWrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -26,4 +27,22 @@
 
   appearance: none;
   background: $lightgray-color url("../../../assets/icons/down.png") 95% 50% no-repeat;
+
+  &.error {
+    border: 1px solid $darkred-color;
+  }
+}
+
+.errorMsg {
+  position: absolute;
+  bottom: 53px;
+  right: 0;
+  padding: 4px 10px;
+  z-index: 20;
+  font-size: 16px;
+  color: $darkred-color;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid $darkred-color;
+  background: $lightgray-color;
 }

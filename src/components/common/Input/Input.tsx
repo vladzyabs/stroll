@@ -14,7 +14,7 @@ function Input(props: InputPropsType) {
 	return (
 		<div className={classes.inputWrapper}>
 			{label && <label>{label}</label>}
-			{error && <span className={classes.errorMsg}>{error}</span>}
+			{touched && error && <span className={classes.errorMsg}>{error}</span>}
 			<input {...input}
 						 {...inputParam}
 						 type={type}

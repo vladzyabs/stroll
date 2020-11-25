@@ -37,7 +37,6 @@ const homeReducer = (state = initialState, action: ActionType): InitialStateType
 				subscribeSuccess: action.payload,
 			}
 		case 'SET_SUCCESSFUL_BOOKING':
-			debugger
 			return {
 				...state,
 				successfulBooking: action.payload,

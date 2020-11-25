@@ -10,12 +10,16 @@ type SelectPropsType
 
 function Select(props: SelectPropsType) {
 	// @ts-ignore
-	const { label, options, input, selectParam } = props
+	const { label, options, input, meta: { touched, error }, selectParam } = props
 
 	return (
 		<div className={classes.selectWrapper}>
 			{label && <label>{label}</label>}
-			<select {...input} {...selectParam} className={classes.select}>
+			{touched && error && <span className={classes.errorMsg}>{error}</span>}
+			<select {...input}
+							{...selectParam}
+							className={touched && error ? `${classes.select} ${classes.error}` : `${classes.select}`}
+			>
 				<option>Any</option>
 				{options.map((item, index) => <option key={index} value={item}>{item}</option>)}
 			</select>

@@ -20,6 +20,36 @@ type FormValuesType = {
 	date: string
 }
 
+const validate = (values: FormValuesType) => {
+	const errors = {} as FormValuesType
+
+	if (!values.name) {
+		errors.name = 'Required'
+	} else if (values.name.length < 3) {
+		errors.name = 'Must be at least 3 characters'
+	} else if (values.name.length >= 15) {
+		errors.name = 'Must be 15 characters or less'
+	}
+
+	if (!values.date) {
+		errors.date = 'Select a date'
+	}
+
+	if(!values.destination) {
+		errors.destination = 'Select from the list'
+	}
+
+	if(!values.activity) {
+		errors.activity = 'Select from the list'
+	}
+
+	if(!values.duration) {
+		errors.duration = 'Select from the list'
+	}
+
+	return errors
+}
+
 function BookingForm() {
 	const dispatch = useDispatch()
 	const success = useSelector<AppRootStateType, boolean | null>(state => state.home.successfulBooking)
@@ -52,9 +82,9 @@ function Form(props: InjectedFormProps) {
 		<form onSubmit={handleSubmit}>
 			<div className={'booking-form__form-content'}>
 				<div className={'booking-form__item'}>
-					<Field name='email'
+					<Field name='name'
 								 type='text'
-								 inputParam={{placeholder: 'Email'}}
+								 inputParam={{ placeholder: 'Name' }}
 								 component={Input}
 								 label={'Name'}
 					/>
@@ -97,6 +127,7 @@ function Form(props: InjectedFormProps) {
 
 const FormRedux = reduxForm<any>({
 	form: 'booking', // имя формы в state (state.form.post)
+	validate,
 })(Form)
 
 export default React.memo(BookingForm)

@@ -33,14 +33,16 @@
 
 .errorMsg {
   position: absolute;
-  top: -12px;
-  left: 10px;
+  bottom: 53px;
+  right: 0;
   padding: 4px 10px;
   z-index: 20;
   font-size: 16px;
   color: $darkred-color;
   background: #fff;
   border-radius: 6px;
+  border: 1px solid $darkred-color;
+  background: $lightgray-color;
 }
 
 .input[type="date"]::-webkit-calendar-picker-indicator {
