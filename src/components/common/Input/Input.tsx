@@ -9,12 +9,17 @@ type InputPropsType = {
 
 function Input(props: InputPropsType) {
 	// @ts-ignore
-	const { label, type, input, inputParam } = props
+	const { label, type, input, meta: { touched, error } , inputParam } = props
 
 	return (
 		<div className={classes.inputWrapper}>
 			{label && <label>{label}</label>}
-			<input {...input} {...inputParam} type={type} className={classes.input}/>
+			{error && <span className={classes.errorMsg}>{error}</span>}
+			<input {...input}
+						 {...inputParam}
+						 type={type}
+						 className={touched && error ? `${classes.input} ${classes.error}` : `${classes.input}`}
+			/>
 		</div>
 	)
 }

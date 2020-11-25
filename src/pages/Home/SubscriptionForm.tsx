@@ -6,6 +6,18 @@ import { postEmailSubscription } from '../../store/homePage'
 import './styles.scss'
 import { AppRootStateType } from '../../store/rootReducer'
 
+const validate = (values: { email: string }) => {
+	const errors = {} as { email: string }
+
+	if (!values.email) {
+		errors.email = 'Required'
+	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+		errors.email = 'Invalid email address'
+	}
+
+	return errors
+}
+
 function SubscriptionForm() {
 	const dispatch = useDispatch()
 	const success = useSelector<AppRootStateType, boolean | null>(state => state.home.subscribeSuccess)
@@ -46,7 +58,7 @@ function Form(props: InjectedFormProps) {
 					<Field name='email'
 								 type='text'
 								 placeholder='Email'
-								 inputParam={{placeholder: 'Email'}}
+								 inputParam={{ placeholder: 'Email' }}
 								 component={Input}
 					/>
 				</div>
@@ -62,6 +74,7 @@ function Form(props: InjectedFormProps) {
 
 const FormRedux = reduxForm<any>({
 	form: 'subscription', // имя формы в state (state.form.post)
+	validate,
 })(Form)
 
 export default React.memo(SubscriptionForm)

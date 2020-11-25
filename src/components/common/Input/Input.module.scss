@@ -1,6 +1,7 @@
 @import "../../../styles/variables";
 
 .inputWrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -24,6 +25,22 @@
   font-size: 15px;
   line-height: 25px;
   color: #8C8C8C;
+
+  &.error {
+    border: 1px solid $darkred-color;
+  }
+}
+
+.errorMsg {
+  position: absolute;
+  top: -12px;
+  left: 10px;
+  padding: 4px 10px;
+  z-index: 20;
+  font-size: 16px;
+  color: $darkred-color;
+  background: #fff;
+  border-radius: 6px;
 }
 
 .input[type="date"]::-webkit-calendar-picker-indicator {
