@@ -18,8 +18,27 @@ function ReviewsBlock() {
 	const dispatch = useDispatch()
 	const reviews = useSelector<AppRootStateType, ReviewsType[]>(state => state.home.reviews)
 
+	const [slideCount, setSlideCount] = React.useState<number>(3)
+
+	const onResize = () => {
+		if (document.documentElement.clientWidth <= 991 && document.documentElement.clientWidth > 767) {
+			setSlideCount(2)
+		} else if (document.documentElement.clientWidth <= 767) {
+			setSlideCount(1)
+		} else {
+			setSlideCount(3)
+		}
+	}
+
 	React.useEffect(() => {
 		dispatch(getReviews())
+
+		onResize()
+
+		window.addEventListener(`resize`, event => {
+			onResize()
+		}, false)
+
 	}, [dispatch])
 
 	return (
@@ -33,7 +52,7 @@ function ReviewsBlock() {
 				<Swiper
 					id={'reviews-slider'}
 					className={'reviews__slider'}
-					slidesPerView={3}
+					slidesPerView={slideCount}
 					spaceBetween={20}
 					pagination={{ clickable: true }}
 				>

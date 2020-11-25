@@ -19,22 +19,22 @@ function BookingForm() {
 
 					<form>
 						<div className={'booking-form__form-content'}>
-							<div>
+							<div className={'booking-form__item'}>
 								<Input type={'input'} label={'Name'} placeholder={'Name'}/>
 							</div>
-							<div>
+							<div className={'booking-form__item'}>
 								<Select label={'Destination'} options={selectData.destination} selectAtr={{}}/>
 							</div>
-							<div>
+							<div className={'booking-form__item'}>
 								<Select label={'Activity'} options={selectData.activity} selectAtr={{}}/>
 							</div>
-							<div>
+							<div className={'booking-form__item'}>
 								<Select label={'Duration'} options={selectData.duration} selectAtr={{}}/>
 							</div>
-							<div>
+							<div className={'booking-form__item'}>
 								<Input type={'date'} label={'Date'}/>
 							</div>
-							<div>
+							<div className={'booking-form__item'}>
 								<Button label={'Submit'}>Submit</Button>
 							</div>
 						</div>
