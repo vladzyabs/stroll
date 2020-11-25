@@ -20,7 +20,7 @@ function BookingForm() {
 					<form>
 						<div className={'booking-form__form-content'}>
 							<div className={'booking-form__item'}>
-								<Input type={'input'} label={'Name'} placeholder={'Name'}/>
+								<Input type={'input'} label={'Name'} input={{placeholder: 'Name'}}/>
 							</div>
 							<div className={'booking-form__item'}>
 								<Select label={'Destination'} options={selectData.destination} selectAtr={{}}/>
@@ -32,7 +32,7 @@ function BookingForm() {
 								<Select label={'Duration'} options={selectData.duration} selectAtr={{}}/>
 							</div>
 							<div className={'booking-form__item'}>
-								<Input type={'date'} label={'Date'}/>
+								<Input type={'date'} label={'Date'} input={{}}/>
 							</div>
 							<div className={'booking-form__item'}>
 								<Button label={'Submit'}>Submit</Button>

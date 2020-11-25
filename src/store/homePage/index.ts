@@ -3,12 +3,14 @@ import MockAdapter from 'axios-mock-adapter'
 import { Dispatch } from 'redux'
 import { GalleryToursType, ReviewsType } from './types'
 
-const mock = new MockAdapter(axios, { delayResponse: 2000 })
+const mock = new MockAdapter(axios, { delayResponse: 200 })
 
 const SET_GALLERY_TOURS = 'SET_GALLERY_TOURS'
 const SET_REVIEWS = 'SET_REVIEWS'
+const SET_SUBSCRIPTION_SUCCESS = 'SET_SUBSCRIPTION_SUCCESS'
 
 const initialState = {
+	subscribeSuccess: null as boolean | null,
 	galleryTours: [] as GalleryToursType[],
 	reviews: [] as ReviewsType[],
 }
@@ -27,6 +29,11 @@ const homeReducer = (state = initialState, action: ActionType): InitialStateType
 				...state,
 				reviews: action.payload,
 			}
+		case 'SET_SUBSCRIPTION_SUCCESS':
+			return {
+				...state,
+				subscribeSuccess: action.payload
+			}
 		default:
 			return state
 	}
@@ -35,19 +42,25 @@ const homeReducer = (state = initialState, action: ActionType): InitialStateType
 
 // actions
 
-const setGalleryTours = (value: GalleryToursType[]) => ({
+const setGalleryTours = (payload: GalleryToursType[]) => ({
 	type: SET_GALLERY_TOURS,
-	payload: value,
+	payload,
 } as const)
 
-const setReviews = (value: ReviewsType[]) => ({
+const setReviews = (payload: ReviewsType[]) => ({
 	type: SET_REVIEWS,
-	payload: value,
+	payload,
+} as const)
+
+const setSubscriptionSuccess = (payload: boolean | null) => ({
+	type: SET_SUBSCRIPTION_SUCCESS,
+	payload,
 } as const)
 
 type ActionType
 	= ReturnType<typeof setGalleryTours>
 	| ReturnType<typeof setReviews>
+	| ReturnType<typeof setSubscriptionSuccess>
 
 
 // thunks
@@ -68,6 +81,21 @@ export const getReviews = () =>
 		try {
 			const res = await axios.get<{ reviews: ReviewsType[] }>('/reviews')
 			dispatch(setReviews(res.data.reviews))
+		} catch (e) {
+			console.log(e)
+			throw e
+		}
+	}
+
+export const postEmailSubscription = (email: string) =>
+	async (dispatch: Dispatch) => {
+		dispatch(setSubscriptionSuccess(null))
+		try {
+			const res = await axios.post<{ success: boolean }>('/subscription', { email })
+			if (res.status === 200) {
+				dispatch(setSubscriptionSuccess(res.data.success))
+			}
+			console.log(res)
 		} catch (e) {
 			console.log(e)
 			throw e
@@ -205,4 +233,8 @@ mock.onGet('/reviews').reply(200, {
 			},
 		},
 	],
+})
+
+mock.onPost('/subscription').reply(200, {
+	success: true,
 })
