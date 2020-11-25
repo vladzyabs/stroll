@@ -1,7 +1,59 @@
+import axios from 'axios'
 import { GalleryToursType } from './types'
+import MockAdapter from 'axios-mock-adapter'
+
+const mock = new MockAdapter(axios, { delayResponse: 2000 })
+
+const SET_GALLERY_TOURS = 'SET_GALLERY_TOURS'
 
 const initialState = {
-	galleryTours: [
+	galleryTours: [] as GalleryToursType[],
+}
+
+type InitialStateType = typeof initialState
+
+const homeReducer = (state = initialState, action: ActionType): InitialStateType => {
+	switch (action.type) {
+		case 'SET_GALLERY_TOURS':
+			return {
+				...state,
+				galleryTours: action.payload,
+			}
+		default:
+			return state
+	}
+}
+
+
+// actions
+
+const setGalleryTours = (value: any) => ({
+	type: SET_GALLERY_TOURS,
+	payload: value,
+} as const)
+
+type ActionType = ReturnType<typeof setGalleryTours>
+
+
+// thunks
+
+export const getGalleryTours =  () =>
+	async	(dispatch: any) => {
+		try {
+			const res = await axios.get('/gallery')
+			debugger
+			dispatch(setGalleryTours(res.data.gallery))
+		} catch (e) {
+			console.log(e)
+			throw e
+		}
+	}
+
+export default homeReducer
+
+
+mock.onGet('/gallery').reply(200, {
+	gallery: [
 		{
 			id: '1',
 			img: 'https://demo.w3layouts.com/demos_new/template_demo/04-04-2020/stroll-liberty-demo_Free/717367814/web/assets/images/g1.jpg',
@@ -68,16 +120,5 @@ const initialState = {
 				price: 850,
 			},
 		},
-	] as GalleryToursType[],
-}
-
-type InitialStateType = typeof initialState
-
-const homeReducer = (state = initialState, action: any): InitialStateType => {
-	switch (action.type) {
-		default:
-			return state
-	}
-}
-
-export default homeReducer
+	],
+})

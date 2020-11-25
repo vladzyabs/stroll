@@ -1,12 +1,31 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Container, Title } from '../../components/common'
 import { AppRootStateType } from '../../store/rootReducer'
 import { GalleryToursType } from '../../store/homePage/types'
+import { getGalleryTours } from '../../store/homePage'
 import './styles.scss'
+import axios  from "axios";
+import MockAdapter  from "axios-mock-adapter";
 
 function Gallery() {
+	const dispatch = useDispatch()
 	const items = useSelector<AppRootStateType, GalleryToursType[]>(state => state.home.galleryTours)
+
+	React.useEffect(() => {
+		dispatch(getGalleryTours())
+	}, [])
+
+	// // This sets the mock adapter on the default instance
+	// var mock = new MockAdapter(axios);
+	//
+	// mock.onGet("/users").reply(200, {
+	// 	users: [{ id: 1, name: "John Smith" }],
+	// });
+	//
+	// axios.get("/users").then(function (response) {
+	// 	console.log(response.data);
+	// });
 
 	return (
 		<section className={'gallery'}>
