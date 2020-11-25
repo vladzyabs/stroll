@@ -92,11 +92,24 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 30px;
     grid-row-gap: 30px;
+
+    @media (max-width: 991px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__title {
     padding-top: 48px;
     margin-bottom: 48px;
+
+    @media (max-width: 991px) {
+      padding-top: 0;
+      margin-bottom: 24px;
+    }
   }
 
   &__card-wrapper {
@@ -151,18 +164,21 @@
       line-height: 30px;
       color: #fff;
       font-weight: 700;
+      margin-bottom: 8px;
     }
 
     h6 {
       font-size: 16px;
       line-height: 25px;
+      font-weight: 500;
       color: #fff;
       opacity: 0.9;
     }
+  }
 
-    &__card-price {
-      color: $yellow-color;
-    }
+  &__card-price {
+    color: $yellow-color;
+    font-weight: 700;
   }
 }
 
@@ -277,7 +293,7 @@
     grid-column-gap: 30px;
     grid-row-gap: 16px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       grid-template-columns: 1fr;
       grid-column-gap: 0;
     }
@@ -304,7 +320,7 @@
       max-width: 50%;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       flex: 0 0 100%;
       max-width: 100%;
     }
