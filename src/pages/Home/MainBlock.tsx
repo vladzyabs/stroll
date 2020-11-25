@@ -81,8 +81,8 @@ function Slide(props: SlidePropsType) {
 				<h6 className={'main__slide-supTitle'}>{props.supTitle}</h6>
 				{
 					props.title === 'Vacation'
-						? <h3 className={'main__slide-supTitle'}>Enjoy your Dream <span>vacation</span></h3>
-						: <h3 className={'main__slide-supTitle'}>Enjoy your Travel <span>destinations</span></h3>
+						? <h3 className={'main__slide-title'}>Enjoy your Dream <span>vacation</span></h3>
+						: <h3 className={'main__slide-title'}>Enjoy your Travel <span>destinations</span></h3>
 				}
 				<p className={'main__slide-description'}>{props.description}</p>
 				<div><ButtonLink href={'/#'}>Read More</ButtonLink></div>
