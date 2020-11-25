@@ -45,7 +45,7 @@ const slides: SlidePropsType[] = [
 
 function MainBlock() {
 	return (
-		<>
+		<section className={'main'}>
 			<Swiper
 				id={'main-slider'}
 				tag={'section'}
@@ -62,7 +62,7 @@ function MainBlock() {
 					</SwiperSlide>)
 				}
 			</Swiper>
-		</>
+		</section>
 	)
 }
 

@@ -4,6 +4,7 @@
   background: $lightgray-color;
 
   &__slider {
+    min-height: calc(100vh - 43px);
   }
 
   &__slide {
@@ -54,6 +55,29 @@
       object-position: center;
       width: 100%;
       height: 100%;
+    }
+  }
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: flex-end;
+    bottom: 60px !important;
+    left: auto !important;
+    right: 30px !important;
+    width: 100%;
+
+    .swiper-pagination-bullet {
+      cursor: pointer;
+      display: block;
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      opacity: 1;
+      margin: 5px;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: $yellow-color;
     }
   }
 }
@@ -389,8 +413,8 @@
 }
 
 .reviews {
-  margin-bottom: 48px + 48px;
   margin-top: 48px + 48px;
+  margin-bottom: 48px + 18px;
 
   &__title {
     margin-bottom: 48px;
@@ -402,18 +426,18 @@
     padding: 40px 30px;
     border: 1px solid #d4ddde;
     border-radius: 6px;
-    margin-right: 20px;
     transition: .3s all;
 
     blockquote {
       position: relative;
-    }
 
-    p {
-      font-weight: 400;
-      font-size: 16px;
-      color: #8C8C8C;
-      transition: .3s all;
+      p {
+        font-weight: 400;
+        font-size: 16px;
+        color: #8C8C8C;
+        transition: .3s all;
+        margin-bottom: 1rem;
+      }
     }
 
     &:hover {
@@ -426,6 +450,10 @@
 
       p {
         color: #fff;
+      }
+
+      h3 {
+        color: $yellow-color;
       }
     }
   }
@@ -442,6 +470,60 @@
   }
 
   &__card-user {
+    display: flex;
+    align-items: center;
+  }
 
+  &__card-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__card-user-inf {
+    h3 {
+      transition: .3s all;
+      color: $title-color;
+    }
+
+    p {
+      transition: .3s all;
+    }
+  }
+
+  &__slider {
+    padding-bottom: 35px !important;
+  }
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: flex-end;
+    bottom: 0 !important;
+    left: auto !important;
+    right: 0 !important;
+    width: 100%;
+
+    .swiper-pagination-bullet {
+      cursor: pointer;
+      display: block;
+      width: 12px;
+      height: 12px;
+      background: $title-color;
+      opacity: 1;
+      margin: 5px;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: $darkred-color;
+    }
   }
 }

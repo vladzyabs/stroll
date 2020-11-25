@@ -6,6 +6,7 @@ import SwiperCore, { Pagination } from 'swiper'
 import 'swiper/swiper-bundle.css'
 import 'swiper/swiper.scss'
 import { Container, Title } from '../../components/common'
+import u1Img from '../../assets/img/t1.jpg'
 import './styles.scss'
 
 SwiperCore.use([Pagination])
@@ -21,7 +22,9 @@ function ReviewsBlock() {
 
 				<Swiper
 					id={'reviews-slider'}
+					className={'reviews__slider'}
 					slidesPerView={3}
+					spaceBetween={20}
 					pagination={{ clickable: true }}
 				>
 
@@ -49,10 +52,10 @@ function ReviewsCard() {
 				</p>
 			</blockquote>
 			<div className={'reviews__card-user'}>
-				<div>
-					<img src="" alt=""/>
+				<div className={'reviews__card-pic'}>
+					<img src={u1Img} alt=""/>
 				</div>
-				<div>
+				<div className={'reviews__card-user-inf'}>
 					<h3>Theo Hall</h3>
 					<p>SEO Expert</p>
 				</div>
