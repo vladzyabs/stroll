@@ -6,12 +6,12 @@ type NavbarPropsType = {
 }
 
 function Navbar(props: NavbarPropsType) {
-	const classesNav = props.active
-		? `${classes.navBar} ${classes.active}`
-		: `${classes.navBar}`
+	const classesNavDesc = props.active
+		? `${classes.navBarDesc} ${classes.active}`
+		: `${classes.navBarDesc}`
 
 	return (
-		<nav className={classesNav}>
+		<nav className={classesNavDesc}>
 			<ul>
 				<li>
 					<a href="/#">Home</a>

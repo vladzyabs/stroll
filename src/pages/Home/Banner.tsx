@@ -22,7 +22,7 @@ function Banner() {
 						<div className={'banner__card-icon'}>
 							<FontAwesomeIcon icon={faBed}/>
 						</div>
-						<h5><a href="/#">Voyages & Cruises</a></h5>
+						<h5><a href="/#">Hotel Bookings</a></h5>
 						<p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere.</p>
 					</div>
 
@@ -30,7 +30,7 @@ function Banner() {
 						<div className={'banner__card-icon'}>
 							<FontAwesomeIcon icon={faPlane} transform={{ rotate: -45 }}/>
 						</div>
-						<h5><a href="/#">Voyages & Cruises</a></h5>
+						<h5><a href="/#">Air Tickets</a></h5>
 						<p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere.</p>
 					</div>
 
@@ -38,7 +38,7 @@ function Banner() {
 						<div className={'banner__card-icon'}>
 							<FontAwesomeIcon icon={faFileAlt}/>
 						</div>
-						<h5><a href="/#">Voyages & Cruises</a></h5>
+						<h5><a href="/#">Visas</a></h5>
 						<p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere.</p>
 					</div>
 

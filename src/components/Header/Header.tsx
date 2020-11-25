@@ -8,6 +8,14 @@ function Header() {
 	const [activeNav, setActiveNav] = React.useState<boolean>(false)
 	const toggleNavHandler = () => setActiveNav(prevState => !prevState)
 
+	React.useEffect(() => {
+		window.addEventListener('scroll', function() {
+			if (window.pageYOffset > 65) {
+				setActiveNav(false)
+			}
+		})
+	}, [activeNav])
+
 	return (
 		<header className={classes.header}>
 			<Container>
@@ -16,7 +24,7 @@ function Header() {
 						<Logo type={'primary'}/>
 					</a>
 					<Navbar active={activeNav}/>
-					<BurgerButton style={{ display: 'none' }} onClick={toggleNavHandler}/>
+					<BurgerButton onClick={toggleNavHandler}/>
 				</div>
 			</Container>
 		</header>

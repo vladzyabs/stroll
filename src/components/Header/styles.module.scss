@@ -1,9 +1,11 @@
 @import "../../styles/variables";
 
 .header {
+  position: relative;
   width: 100%;
   background: $darkred-color;
   padding: 10px;
+  z-index: 900;
 
   .content {
     display: flex;
@@ -33,17 +35,27 @@
   border-radius: 4px;
   padding: 7px 10px;
   background: #fff url("../../assets/icons/burger.svg") 50% 50% no-repeat;
+
+  display: none;
+
+  @media (max-width: 991px) {
+    & {
+      display: block;
+    }
+  }
 }
 
-.navBar {
-  &>ul {
+.navBarDesc {
+  display: block;
+
+  & > ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
 
-    &>li {
+    & > li {
       margin: 0 4px;
 
       a {
@@ -57,6 +69,63 @@
 
         &:hover, &:focus {
           color: $yellow-color;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: .3s all;
+
+    &.active {
+      transform: scaleY(1);
+    }
+
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+    background: $darkred-color;
+    z-index: -1;
+
+    ul {
+      flex-direction: column;
+      background: #fff;
+      //width: 75%;
+      margin: 0 auto 10px;
+      border-radius: 6px;
+      padding: 10px 15px;
+
+      @media (min-width: 575.98px){
+        & {
+          max-width: 540px;
+          padding: 0;
+        }
+      }
+
+      @media (min-width: 767.98px){
+        & {
+          max-width: 720px;
+        }
+      }
+
+      @media (min-width: 991.98px) {
+        & {
+          max-width: 960px;
+        }
+      }
+
+      li {
+        a {
+          display: block;
+          color: #252b33;
+          padding: 0.6em 1em;
+
+          &:hover {
+            color: $darkred-color;
+          }
         }
       }
     }
