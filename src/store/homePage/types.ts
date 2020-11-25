@@ -9,3 +9,13 @@ export type GalleryToursType = {
 	}
 	link: string
 }
+
+export type ReviewsType = {
+	id: string
+	text: string
+	user: {
+		img: string
+		name: string
+		position: string
+	}
+}

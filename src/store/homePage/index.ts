@@ -1,13 +1,16 @@
 import axios from 'axios'
-import { GalleryToursType } from './types'
 import MockAdapter from 'axios-mock-adapter'
+import { Dispatch } from 'redux'
+import { GalleryToursType, ReviewsType } from './types'
 
 const mock = new MockAdapter(axios, { delayResponse: 2000 })
 
 const SET_GALLERY_TOURS = 'SET_GALLERY_TOURS'
+const SET_REVIEWS = 'SET_REVIEWS'
 
 const initialState = {
 	galleryTours: [] as GalleryToursType[],
+	reviews: [] as ReviewsType[],
 }
 
 type InitialStateType = typeof initialState
@@ -19,6 +22,11 @@ const homeReducer = (state = initialState, action: ActionType): InitialStateType
 				...state,
 				galleryTours: action.payload,
 			}
+		case 'SET_REVIEWS':
+			return {
+				...state,
+				reviews: action.payload,
+			}
 		default:
 			return state
 	}
@@ -27,22 +35,39 @@ const homeReducer = (state = initialState, action: ActionType): InitialStateType
 
 // actions
 
-const setGalleryTours = (value: any) => ({
+const setGalleryTours = (value: GalleryToursType[]) => ({
 	type: SET_GALLERY_TOURS,
 	payload: value,
 } as const)
 
-type ActionType = ReturnType<typeof setGalleryTours>
+const setReviews = (value: ReviewsType[]) => ({
+	type: SET_REVIEWS,
+	payload: value,
+} as const)
+
+type ActionType
+	= ReturnType<typeof setGalleryTours>
+	| ReturnType<typeof setReviews>
 
 
 // thunks
 
-export const getGalleryTours =  () =>
-	async	(dispatch: any) => {
+export const getGalleryTours = () =>
+	async (dispatch: Dispatch) => {
 		try {
-			const res = await axios.get('/gallery')
-			debugger
+			const res = await axios.get<{ gallery: GalleryToursType[] }>('/gallery')
 			dispatch(setGalleryTours(res.data.gallery))
+		} catch (e) {
+			console.log(e)
+			throw e
+		}
+	}
+
+export const getReviews = () =>
+	async (dispatch: Dispatch) => {
+		try {
+			const res = await axios.get<{ reviews: ReviewsType[] }>('/reviews')
+			dispatch(setReviews(res.data.reviews))
 		} catch (e) {
 			console.log(e)
 			throw e
@@ -118,6 +143,65 @@ mock.onGet('/gallery').reply(200, {
 				days: 3,
 				nights: 4,
 				price: 850,
+			},
+		},
+	],
+})
+
+mock.onGet('/reviews').reply(200, {
+	reviews: [
+		{
+			id: '1',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			user: {
+				img: 'https://demo.w3layouts.com/demos_new/template_demo/04-04-2020/stroll-liberty-demo_Free/717367814/web/assets/images/t1.jpg',
+				name: 'Theo Hall',
+				position: 'SEO Expert',
+			},
+		},
+		{
+			id: '2',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			user: {
+				img: 'https://demo.w3layouts.com/demos_new/template_demo/04-04-2020/stroll-liberty-demo_Free/717367814/web/assets/images/t2.jpg',
+				name: 'Jenna Johnson',
+				position: 'SEO Expert',
+			},
+		},
+		{
+			id: '3',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			user: {
+				img: 'https://demo.w3layouts.com/demos_new/template_demo/04-04-2020/stroll-liberty-demo_Free/717367814/web/assets/images/t3.jpg',
+				name: 'Linda Carini',
+				position: 'SEO Expert',
+			},
+		},
+		{
+			id: '4',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			user: {
+				img: 'https://demo.w3layouts.com/demos_new/template_demo/04-04-2020/stroll-liberty-demo_Free/717367814/web/assets/images/t4.jpg',
+				name: 'Mike Johnson',
+				position: 'SEO Expert',
+			},
+		},
+		{
+			id: '5',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			user: {
+				img: 'https://demo.w3layouts.com/demos_new/template_demo/04-04-2020/stroll-liberty-demo_Free/717367814/web/assets/images/t5.jpg',
+				name: 'Theo Hall',
+				position: 'Theo Hall',
+			},
+		},
+		{
+			id: '6',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			user: {
+				img: 'https://demo.w3layouts.com/demos_new/template_demo/04-04-2020/stroll-liberty-demo_Free/717367814/web/assets/images/t5.jpg',
+				name: 'Theo Hall',
+				position: 'Jenna Johnson',
 			},
 		},
 	],

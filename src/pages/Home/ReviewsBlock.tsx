@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -6,12 +7,21 @@ import SwiperCore, { Pagination } from 'swiper'
 import 'swiper/swiper-bundle.css'
 import 'swiper/swiper.scss'
 import { Container, Title } from '../../components/common'
-import u1Img from '../../assets/img/t1.jpg'
 import './styles.scss'
+import { getReviews } from '../../store/homePage'
+import { AppRootStateType } from '../../store/rootReducer'
+import { ReviewsType } from '../../store/homePage/types'
 
 SwiperCore.use([Pagination])
 
 function ReviewsBlock() {
+	const dispatch = useDispatch()
+	const reviews = useSelector<AppRootStateType, ReviewsType[]>(state => state.home.reviews)
+
+	React.useEffect(() => {
+		dispatch(getReviews())
+	}, [dispatch])
+
 	return (
 		<section className={'reviews'}>
 			<Container>
@@ -28,10 +38,19 @@ function ReviewsBlock() {
 					pagination={{ clickable: true }}
 				>
 
-					<SwiperSlide><ReviewsCard/></SwiperSlide>
-					<SwiperSlide><ReviewsCard/></SwiperSlide>
-					<SwiperSlide><ReviewsCard/></SwiperSlide>
-					<SwiperSlide><ReviewsCard/></SwiperSlide>
+					{
+						reviews.map(r => <SwiperSlide key={r.id}>
+							<ReviewsCard
+								id={r.id}
+								text={r.text}
+								user={r.user}
+							/>
+						</SwiperSlide>)
+					}
+					{/*<SwiperSlide><ReviewsCard/></SwiperSlide>*/}
+					{/*<SwiperSlide><ReviewsCard/></SwiperSlide>*/}
+					{/*<SwiperSlide><ReviewsCard/></SwiperSlide>*/}
+					{/*<SwiperSlide><ReviewsCard/></SwiperSlide>*/}
 
 				</Swiper>
 			</Container>
@@ -39,7 +58,9 @@ function ReviewsBlock() {
 	)
 }
 
-function ReviewsCard() {
+type ReviewsCardPropsType = ReviewsType
+
+function ReviewsCard(props: ReviewsCardPropsType) {
 	return (
 		<div className={'reviews__card'}>
 			<blockquote>
@@ -47,17 +68,18 @@ function ReviewsCard() {
 					<FontAwesomeIcon icon={faQuoteLeft}/>
 				</div>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-					incididunt ut labore et dolore magna aliqua.
+					{
+						props.text
+					}
 				</p>
 			</blockquote>
 			<div className={'reviews__card-user'}>
 				<div className={'reviews__card-pic'}>
-					<img src={u1Img} alt=""/>
+					<img src={props.user.img} alt={props.user.name}/>
 				</div>
 				<div className={'reviews__card-user-inf'}>
-					<h3>Theo Hall</h3>
-					<p>SEO Expert</p>
+					<h3>{props.user.name}</h3>
+					<p>{props.user.position}</p>
 				</div>
 			</div>
 		</div>
