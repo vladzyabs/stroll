@@ -93,19 +93,22 @@
     ul {
       flex-direction: column;
       background: #fff;
-      //width: 75%;
       margin: 0 auto 10px;
       border-radius: 6px;
-      padding: 10px 15px;
+      padding: 10px 0;
 
-      @media (min-width: 575.98px){
+      @media (max-width: 576px) {
+        margin: 10px 25px;
+      }
+
+      @media (min-width: 576px) {
         & {
           max-width: 540px;
           padding: 0;
         }
       }
 
-      @media (min-width: 767.98px){
+      @media (min-width: 767.98px) {
         & {
           max-width: 720px;
         }
