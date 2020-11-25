@@ -3,8 +3,8 @@ import { Field, reduxForm, InjectedFormProps } from 'redux-form'
 import { Alert, Button, Container, Input, Title } from '../../components/common'
 import { useDispatch, useSelector } from 'react-redux'
 import { postEmailSubscription } from '../../store/homePage'
-import './styles.scss'
 import { AppRootStateType } from '../../store/rootReducer'
+import './styles.scss'
 
 const validate = (values: { email: string }) => {
 	const errors = {} as { email: string }
@@ -22,7 +22,6 @@ function SubscriptionForm() {
 	const dispatch = useDispatch()
 	const success = useSelector<AppRootStateType, boolean | null>(state => state.home.subscribeSuccess)
 	const handleSubmit = (values: { email: string }) => {
-		console.log(values)
 		dispatch(postEmailSubscription(values.email))
 	}
 

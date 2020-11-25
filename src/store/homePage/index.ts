@@ -1,7 +1,7 @@
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import { Dispatch } from 'redux'
-import { GalleryToursType, ReviewsType } from './types'
+import { BookingValuesType, GalleryToursType, ReviewsType } from './types'
 
 const mock = new MockAdapter(axios, { delayResponse: 200 })
 
@@ -108,14 +108,14 @@ export const postEmailSubscription = (email: string) =>
 			if (res.status === 200) {
 				dispatch(setSubscriptionSuccess(res.data.success))
 			}
-			console.log(res)
+			console.log(res) // check
 		} catch (e) {
 			console.log(e)
 			throw e
 		}
 	}
 
-export const postBooking = (data: any) =>
+export const postBooking = (data: BookingValuesType) =>
 	async (dispatch: Dispatch) => {
 		dispatch(setSuccessfulBooking(null))
 		try {
@@ -123,7 +123,7 @@ export const postBooking = (data: any) =>
 			if (res.status === 200) {
 				dispatch(setSuccessfulBooking(res.data.success))
 			}
-			console.log(res)
+			console.log(res) // check
 		} catch (e) {
 			console.log(e)
 			throw e

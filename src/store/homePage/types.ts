@@ -19,3 +19,11 @@ export type ReviewsType = {
 		position: string
 	}
 }
+
+export type BookingValuesType = {
+	name: string
+	destination: string
+	activity: string
+	duration: string
+	date: string
+}

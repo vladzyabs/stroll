@@ -2,9 +2,10 @@ import React from 'react'
 import { Field, InjectedFormProps, reduxForm } from 'redux-form'
 import { Alert, Button, Container, Input, Select, Title } from '../../components/common'
 import { postBooking } from '../../store/homePage'
-import './styles.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppRootStateType } from '../../store/rootReducer'
+import { BookingValuesType } from '../../store/homePage/types'
+import './styles.scss'
 
 const selectData = {
 	destination: ['America', 'Africa', 'Asia', 'Eastern Europe', 'Europe', 'South America'],
@@ -12,13 +13,7 @@ const selectData = {
 	duration: ['1 Day Tour', '2-4 Days Tour', '5-7 Days Tour', '7+ Days Tour'],
 }
 
-type FormValuesType = {
-	name: string
-	destination: string
-	activity: string
-	duration: string
-	date: string
-}
+type FormValuesType = BookingValuesType
 
 const validate = (values: FormValuesType) => {
 	const errors = {} as FormValuesType
