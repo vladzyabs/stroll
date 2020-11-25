@@ -258,12 +258,20 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 50px;
+
+    @media (max-width: 991px) {
+      grid-template-columns: 1fr;
+      grid-row-gap: 20px;
+    }
   }
 
   &__desc, &__title {
     align-items: center;
   }
 
+  &__title {
+    margin-bottom: 24px;
+  }
 
   &__desc {
     p {
