@@ -1,16 +1,18 @@
 @import "../../styles/variables";
 
-.slider {
-
+.main {
   background: $lightgray-color;
 
-  .slide {
+  &__slider {
+  }
+
+  &__slide {
     min-height: calc(100vh - 43px);
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
 
-  .slideInformation {
+  &__slide-information {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,7 +20,7 @@
     padding-left: 80px;
   }
 
-  .slideSupTitle {
+  &__slide-supTitle {
     color: $darkblue-color;
     font-size: 18px;
     font-weight: 700;
@@ -26,7 +28,7 @@
     margin-bottom: 16px;
   }
 
-  .slideTitle {
+  &__slide-title {
     font-size: 55px;
     line-height: 65px;
     font-weight: 400;
@@ -38,13 +40,13 @@
     }
   }
 
-  .slideDesc {
+  &__slide-description {
     color: #8C8C8C;
     font-size: 18px;
     margin-bottom: 30px;
   }
 
-  .slideImg {
+  &__slide-img {
     height: 100%;
 
     img {
@@ -60,7 +62,7 @@
   background: $lightgray-color;
   padding: 48px 0;
 
-  .content {
+  &__content {
     margin-bottom: 48px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -68,16 +70,16 @@
     grid-row-gap: 30px;
   }
 
-  .title {
+  &__title {
     padding-top: 48px;
     margin-bottom: 48px;
   }
 
-  .galleryCardWrapper {
+  &__card-wrapper {
     border-radius: 6px;
   }
 
-  .galleryCard {
+  &__card {
     position: relative;
 
     &:after {
@@ -93,7 +95,7 @@
     }
   }
 
-  .cardImg {
+  &__card-img {
     width: 100%;
 
     a {
@@ -108,7 +110,7 @@
     }
   }
 
-  .cardTitle {
+  &__card-title {
     z-index: 10;
     position: absolute;
     bottom: 0;
@@ -134,18 +136,18 @@
       opacity: 0.9;
     }
 
-    .cardTitlePrice {
+    &__card-price {
       color: $yellow-color;
     }
   }
 }
 
-.videoBlock {
+.video {
   padding-top: 48px + 48px;
   position: relative;
   margin-bottom: 50px;
 
-  .videoBtn {
+  &__btn {
     cursor: pointer;
     outline: none;
     position: absolute;
@@ -168,7 +170,7 @@
     }
   }
 
-  .videoBg {
+  &__bg {
     position: relative;
     width: 100%;
     border-radius: 6px;
@@ -209,39 +211,42 @@
   }
 }
 
-.videoSub {
+.video-sub {
   margin-bottom: 50px;
 
-  .content {
+  &__content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 50px;
   }
 
-  .videoSubItem {
+  &__desc, &__title {
     align-items: center;
   }
 
-  p {
-    line-height: 26px;
-    font-weight: 400;
-    font-size: 16px;
-    color: $gray-color;
+
+  &__desc {
+    p {
+      line-height: 26px;
+      font-weight: 400;
+      font-size: 16px;
+      color: $gray-color;
+    }
   }
 }
 
-.bookingForm {
+.booking-form {
   padding-bottom: 48px;
 
-  .content {
+  &__content {
     padding-bottom: 48px;
   }
 
-  .title {
+  &__title {
     margin-bottom: 24px;
   }
 
-  .formContent {
+  &__form-content {
     padding-top: 16px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -253,32 +258,18 @@
 .banner {
   padding: 50px;
 
-  .content {
+  &__content {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
   }
 
-  .bannerCard {
+  &__card {
     width: 25%;
     padding: 15px;
 
-    .cardIcon {
-      width: 74px;
-      height: 74px;
-      border-radius: 50%;
-      background: $lightred-color;
-      text-align: center;
-      color: $darkred-color;
-      font-size: 25px;
-      line-height: 74px;
-      transition: .2s all;
-
-      margin-bottom: 20px;
-    }
-
-    &:hover .cardIcon {
+    &:hover .banner__card-icon {
       background: $lightblue-color;
       color: $darkblue-color;
     }
@@ -303,9 +294,23 @@
       color: $gray-color;
     }
   }
+
+  &__card-icon {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background: $lightred-color;
+    text-align: center;
+    color: $darkred-color;
+    font-size: 25px;
+    line-height: 74px;
+    transition: .2s all;
+
+    margin-bottom: 20px;
+  }
 }
 
-.subscribeForm {
+.subscribe {
   padding: 90px 0;
   position: relative;
   background-image: url("../../assets/img/bgSubscribeForm.jpg");
@@ -328,17 +333,17 @@
     z-index: -1;
   }
 
-  .content {
+  &__content {
     max-width: 600px;
     margin-left: auto;
     color: #fff;
   }
 
-  .title {
+  &__title {
     margin-bottom: 10px;
   }
 
-  .supDesc {
+  &__sup-desc {
     font-style: normal;
     font-size: 15px;
     line-height: 26px;
@@ -346,7 +351,7 @@
     margin-bottom: 14px;
   }
 
-  .subDesc {
+  &__sub-desc {
     opacity: 0.8;
     font-style: normal;
     font-size: 15px;
@@ -355,13 +360,13 @@
     margin-top: 15px;
   }
 
-  .formContent {
+  &__form-content {
     display: flex;
     width: 100%;
     margin-bottom: 15px;
   }
 
-  .formInput {
+  &__form-input {
     width: 70%;
 
     input {
@@ -369,7 +374,7 @@
     }
   }
 
-  .formBtn {
+  &__form-btn {
     width: 30%;
 
     button {
@@ -380,5 +385,63 @@
         background: $darkblue-color;
       }
     }
+  }
+}
+
+.reviews {
+  margin-bottom: 48px + 48px;
+  margin-top: 48px + 48px;
+
+  &__title {
+    margin-bottom: 48px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    border: 1px solid #d4ddde;
+    border-radius: 6px;
+    margin-right: 20px;
+    transition: .3s all;
+
+    blockquote {
+      position: relative;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 16px;
+      color: #8C8C8C;
+      transition: .3s all;
+    }
+
+    &:hover {
+      background: $darkblue-color;
+
+      .reviews__card-icon {
+        color: #fff;
+        opacity: .2;
+      }
+
+      p {
+        color: #fff;
+      }
+    }
+  }
+
+  &__card-icon {
+    transition: .3s all;
+    position: absolute;
+    font-size: 50px;
+    //z-index: -1;
+    top: -25px;
+    left: 0;
+    color: $darkblue-color;
+    opacity: .2;
+  }
+
+  &__card-user {
+
   }
 }

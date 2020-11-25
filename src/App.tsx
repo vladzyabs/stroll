@@ -1,5 +1,5 @@
 import React from 'react'
-import HomePage from './pages/Home/Home'
+import HomePage from './pages/Home'
 import { ButtonUp, Footer, Header } from './components'
 
 function App() {

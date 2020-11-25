@@ -3,12 +3,12 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Pagination } from 'swiper'
 import 'swiper/swiper-bundle.css'
 import 'swiper/swiper.scss'
-import classes from './styles.module.scss'
 import slideImg1 from '../../assets/img/slider1.jpg'
 import slideImg2 from '../../assets/img/slider2.jpg'
 import slideImg3 from '../../assets/img/slider3.jpg'
 import slideImg4 from '../../assets/img/slider4.jpg'
 import { ButtonLink } from '../../components/common'
+import './styles.scss'
 
 SwiperCore.use([Pagination])
 
@@ -43,14 +43,14 @@ const slides: SlidePropsType[] = [
 	},
 ]
 
-function Carousel() {
+function MainBlock() {
 	return (
 		<>
 			<Swiper
 				id={'main-slider'}
 				tag={'section'}
 				slidesPerView={1}
-				className={classes.slider}
+				className={'main__slider'}
 				pagination={{ clickable: true }}
 			>
 
@@ -76,22 +76,22 @@ type SlidePropsType = {
 
 function Slide(props: SlidePropsType) {
 	return (
-		<div className={classes.slide}>
-			<div className={classes.slideInformation}>
-				<h6 className={classes.slideSupTitle}>{props.supTitle}</h6>
+		<div className={'main__slide'}>
+			<div className={'main__slide-information'}>
+				<h6 className={'main__slide-supTitle'}>{props.supTitle}</h6>
 				{
 					props.title === 'Vacation'
-						? <h3 className={classes.slideTitle}>Enjoy your Dream <span>vacation</span></h3>
-						: <h3 className={classes.slideTitle}>Enjoy your Travel <span>destinations</span></h3>
+						? <h3 className={'main__slide-supTitle'}>Enjoy your Dream <span>vacation</span></h3>
+						: <h3 className={'main__slide-supTitle'}>Enjoy your Travel <span>destinations</span></h3>
 				}
-				<p className={classes.slideDesc}>{props.description}</p>
+				<p className={'main__slide-description'}>{props.description}</p>
 				<div><ButtonLink href={'/#'}>Read More</ButtonLink></div>
 			</div>
-			<div className={classes.slideImg}>
+			<div className={'main__slide-img'}>
 				<img src={props.img} alt=""/>
 			</div>
 		</div>
 	)
 }
 
-export default React.memo(Carousel)
+export default React.memo(MainBlock)

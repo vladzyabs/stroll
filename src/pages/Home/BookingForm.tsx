@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Container, Input, Select, Title } from '../../components/common'
-import classes from './styles.module.scss'
+import './styles.scss'
 
 const selectData = {
 	destination: ['America', 'Africa', 'Asia', 'Eastern Europe', 'Europe', 'South America'],
@@ -10,15 +10,15 @@ const selectData = {
 
 function BookingForm() {
 	return (
-		<section className={classes.bookingForm}>
+		<section className={'booking-form'}>
 			<Container>
-				<div className={classes.content}>
-					<div className={classes.title}>
+				<div className={'booking-form__content'}>
+					<div className={'booking-form__title'}>
 						<Title type={'primary'} supTitle={'10-30% off'} title={'book now'}/>
 					</div>
 
 					<form>
-						<div className={classes.formContent}>
+						<div className={'booking-form__form-content'}>
 							<div>
 								<Input type={'input'} label={'Name'}/>
 							</div>

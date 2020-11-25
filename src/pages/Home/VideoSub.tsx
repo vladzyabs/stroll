@@ -1,16 +1,16 @@
 import React from 'react'
 import { Container, Title } from '../../components/common'
-import classes from './styles.module.scss'
+import './styles.scss'
 
 function VideoSub() {
 	return (
-		<section className={classes.videoSub}>
+		<section className={'video-sub'}>
 			<Container>
-				<div className={classes.content}>
-					<div className={classes.videoSubItem}>
+				<div className={'video-sub__content'}>
+					<div className={'video-sub__title'}>
 						<Title type={'primary'} supTitle={'Short video'} title={'Find your perfect vacation'}/>
 					</div>
-					<div className={classes.videoSubItem}>
+					<div className={'video-sub__desc'}>
 						<p>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur hic odio voluptatem tenetur
 							consequatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur hic odio voluptatem
