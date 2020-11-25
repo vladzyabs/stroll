@@ -1,14 +1,13 @@
 import React from 'react'
-import g1 from '../../assets/img/g1.jpg'
-import g2 from '../../assets/img/g2.jpg'
-import g3 from '../../assets/img/g3.jpg'
-import g4 from '../../assets/img/g4.jpg'
-import g5 from '../../assets/img/g5.jpg'
-import g6 from '../../assets/img/g6.jpg'
+import { useSelector } from 'react-redux'
 import { Container, Title } from '../../components/common'
+import { AppRootStateType } from '../../store/rootReducer'
+import { GalleryToursType } from '../../store/homePage/types'
 import './styles.scss'
 
 function Gallery() {
+	const items = useSelector<AppRootStateType, GalleryToursType[]>(state => state.home.galleryTours)
+
 	return (
 		<section className={'gallery'}>
 			<Container>
@@ -17,12 +16,19 @@ function Gallery() {
 				</div>
 				<div className={'gallery__content'}>
 
-					<GalleryCard img={g1} title={'Paris'} link={'/#'} subTitle={{ days: 3, nights: 4, price: 750 }}/>
-					<GalleryCard img={g2} title={'Bankok'} link={'/#'} subTitle={{ days: 2, nights: 3, price: 650 }}/>
-					<GalleryCard img={g3} title={'Maldives'} link={'/#'} subTitle={{ days: 2, nights: 3, price:550 }}/>
-					<GalleryCard img={g4} title={'Greece'} link={'/#'} subTitle={{ days: 3, nights: 4, price: 950 }}/>
-					<GalleryCard img={g5} title={'London'} link={'/#'} subTitle={{ days: 2, nights: 3, price: 550 }}/>
-					<GalleryCard img={g6} title={'Julian Alps'} link={'/#'} subTitle={{ days: 3, nights: 4, price: 850 }}/>
+					{
+						items.map(i => <GalleryCard key={i.id}
+																				id={i.id}
+																				img={i.img}
+																				title={i.title}
+																				link={i.link}
+																				subTitle={{
+																					days: i.subTitle.days,
+																					nights: i.subTitle.nights,
+																					price: i.subTitle.price,
+																				}}
+						/>)
+					}
 
 				</div>
 			</Container>
@@ -30,16 +36,7 @@ function Gallery() {
 	)
 }
 
-type GalleryCardPropsType = {
-	img: string
-	title: string
-	subTitle: {
-		days: number
-		nights: number
-		price: number | string
-	}
-	link: string
-}
+type GalleryCardPropsType = GalleryToursType
 
 function GalleryCard(props: GalleryCardPropsType) {
 	return (
