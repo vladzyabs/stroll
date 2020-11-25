@@ -8,9 +8,11 @@ const mock = new MockAdapter(axios, { delayResponse: 200 })
 const SET_GALLERY_TOURS = 'SET_GALLERY_TOURS'
 const SET_REVIEWS = 'SET_REVIEWS'
 const SET_SUBSCRIPTION_SUCCESS = 'SET_SUBSCRIPTION_SUCCESS'
+const SET_SUCCESSFUL_BOOKING = 'SET_SUCCESSFUL_BOOKING'
 
 const initialState = {
 	subscribeSuccess: null as boolean | null,
+	successfulBooking: null as boolean | null,
 	galleryTours: [] as GalleryToursType[],
 	reviews: [] as ReviewsType[],
 }
@@ -32,7 +34,13 @@ const homeReducer = (state = initialState, action: ActionType): InitialStateType
 		case 'SET_SUBSCRIPTION_SUCCESS':
 			return {
 				...state,
-				subscribeSuccess: action.payload
+				subscribeSuccess: action.payload,
+			}
+		case 'SET_SUCCESSFUL_BOOKING':
+			debugger
+			return {
+				...state,
+				successfulBooking: action.payload,
 			}
 		default:
 			return state
@@ -57,10 +65,16 @@ const setSubscriptionSuccess = (payload: boolean | null) => ({
 	payload,
 } as const)
 
+const setSuccessfulBooking = (payload: boolean | null) => ({
+	type: SET_SUCCESSFUL_BOOKING,
+	payload,
+} as const)
+
 type ActionType
 	= ReturnType<typeof setGalleryTours>
 	| ReturnType<typeof setReviews>
 	| ReturnType<typeof setSubscriptionSuccess>
+	| ReturnType<typeof setSuccessfulBooking>
 
 
 // thunks
@@ -94,6 +108,21 @@ export const postEmailSubscription = (email: string) =>
 			const res = await axios.post<{ success: boolean }>('/subscription', { email })
 			if (res.status === 200) {
 				dispatch(setSubscriptionSuccess(res.data.success))
+			}
+			console.log(res)
+		} catch (e) {
+			console.log(e)
+			throw e
+		}
+	}
+
+export const postBooking = (data: any) =>
+	async (dispatch: Dispatch) => {
+		dispatch(setSuccessfulBooking(null))
+		try {
+			const res = await axios.post<{ success: boolean }>('/booking', data )
+			if (res.status === 200) {
+				dispatch(setSuccessfulBooking(res.data.success))
 			}
 			console.log(res)
 		} catch (e) {
@@ -236,5 +265,9 @@ mock.onGet('/reviews').reply(200, {
 })
 
 mock.onPost('/subscription').reply(200, {
+	success: true,
+})
+
+mock.onPost('/booking').reply(200, {
 	success: true,
 })

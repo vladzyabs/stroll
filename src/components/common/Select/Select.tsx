@@ -3,20 +3,21 @@ import classes from './Select.module.scss'
 
 type SelectPropsType
 	= {
-	selectAtr: React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
+	selectParam?: React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 	options: string[]
 	label?: string
 }
 
 function Select(props: SelectPropsType) {
-	const classesSelect = `${classes.select} ${props.selectAtr.className ? props.selectAtr.className : ''}`
+	// @ts-ignore
+	const { label, options, input, selectParam } = props
 
 	return (
 		<div className={classes.selectWrapper}>
-			{props.label && <label>{props.label}</label>}
-			<select {...props.selectAtr} className={classesSelect}>
+			{label && <label>{label}</label>}
+			<select {...input} {...selectParam} className={classes.select}>
 				<option>Any</option>
-				{props.options.map((item, index) => <option key={index} value={item}>{item}</option>)}
+				{options.map((item, index) => <option key={index} value={item}>{item}</option>)}
 			</select>
 		</div>
 	)

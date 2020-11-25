@@ -10,6 +10,7 @@ function SubscriptionForm() {
 	const dispatch = useDispatch()
 	const success = useSelector<AppRootStateType, boolean | null>(state => state.home.subscribeSuccess)
 	const handleSubmit = (values: { email: string }) => {
+		console.log(values)
 		dispatch(postEmailSubscription(values.email))
 	}
 
@@ -44,7 +45,8 @@ function Form(props: InjectedFormProps) {
 				<div className={'subscribe__form-input'}>
 					<Field name='email'
 								 type='text'
-								 placeholder={'Email'}
+								 placeholder='Email'
+								 inputParam={{placeholder: 'Email'}}
 								 component={Input}
 					/>
 				</div>

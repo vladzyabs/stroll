@@ -1,21 +1,20 @@
 import React from 'react'
 import classes from './Input.module.scss'
 
-type InputPropsType
-	= {
-	input: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-	type: 'input' | 'date'
+type InputPropsType = {
+	inputParam?: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+	type: 'text' | 'date'
 	label?: string
 }
 
 function Input(props: InputPropsType) {
-	const { label, type, input } = props
-	const classesInput = `${classes.input} ${input.className ? input.className : ''}`
+	// @ts-ignore
+	const { label, type, input, inputParam } = props
 
 	return (
 		<div className={classes.inputWrapper}>
 			{label && <label>{label}</label>}
-			<input {...input} type={type} className={classesInput}/>
+			<input {...input} {...inputParam} type={type} className={classes.input}/>
 		</div>
 	)
 }
