@@ -266,10 +266,14 @@
     border-radius: 6px;
     overflow: hidden;
     z-index: 9;
-    min-height: 32em;
+    min-height: 500px;
     display: grid;
     align-items: center;
 
+    @media (max-width: 991px) {
+      min-height: 400px;
+    }
+    
     &:after {
       content: "";
       background: rgba(8, 67, 76, 0.34);
