@@ -1,10 +1,18 @@
 import React from 'react'
+import HomePage from './pages/Home'
+import { ButtonUp, Footer, Header } from './components'
 
 function App() {
 	return (
-		<div className={'app'}>
-			APP
-		</div>
+		<>
+			<div id={'#top'}></div>
+			<ButtonUp/>
+			<Header/>
+
+			<HomePage/>
+
+			<Footer/>
+		</>
 	)
 }
 
