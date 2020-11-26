@@ -3,6 +3,7 @@ import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faLinkedinIn, faTwitter, faGooglePlusG, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Container, Logo } from '../common'
+import SubFooter from './SubFooter'
 import './Footer.scss'
 
 function Footer() {
@@ -115,6 +116,7 @@ function Footer() {
 
 				</div>
 			</Container>
+			<SubFooter/>
 		</footer>
 	)
 }
