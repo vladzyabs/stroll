@@ -5,8 +5,6 @@ import { AppRootStateType } from '../../store/rootReducer'
 import { GalleryToursType } from '../../store/homePage/types'
 import { getGalleryTours } from '../../store/homePage'
 import './styles.scss'
-import axios  from "axios";
-import MockAdapter  from "axios-mock-adapter";
 
 function Gallery() {
 	const dispatch = useDispatch()
